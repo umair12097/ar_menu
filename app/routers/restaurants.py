@@ -108,7 +108,7 @@ from app.models.user import User
 
 router = APIRouter()
 
-@router.post("/restaurants/", response_model=RestaurantRead)
+@router.post("/", response_model=RestaurantRead)
 def create_restaurant(
     restaurant_in: RestaurantCreate,
     db: Session = Depends(get_db),

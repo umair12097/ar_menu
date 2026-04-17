@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AR Menu — Backend (FastAPI)
 
 ## Requirements
@@ -72,3 +73,6 @@ POST /upload/model/menu-item/{item_id}
 ```
 Models are served statically from the `uploads/models/` directory and
 rendered client-side with Google's `<model-viewer>` web component.
+=======
+# ar_menu
+>>>>>>> 5d41e9fceaecce3d05c0013ac7f5787ee45a00ea

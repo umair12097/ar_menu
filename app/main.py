@@ -51,11 +51,11 @@
 # @app.get("/health", tags=["Health"])
 # def health_check():
 #     return {"status": "healthy"}
+
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-
 from .config import settings
 from .database import Base, engine
 from .routers import auth, menu, orders, restaurants, upload
@@ -78,13 +78,15 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://ar-menu-nextjs.vercel.app",
-        "https://ar-menu-nextjs-*.vercel.app",   # Important for previews
         "http://localhost:3000",
         "http://localhost:3001",
     ],
+    allow_origin_regex=r"https://ar-menu-nextjs-.*\.vercel\.app",  # ✅ replaces wildcard string
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allow_headers=["*"],
+    expose_headers=["*"],
+    max_age=600,
 )
 
 # Mount static files for uploads

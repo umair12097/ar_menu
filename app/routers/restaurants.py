@@ -14,7 +14,7 @@ from ..schemas import (
 from ..utils.auth import get_current_user
 from ..utils.qr_generator import generate_qr_code
 
-router = APIRouter(prefix="/restaurants", tags=["Restaurants"])
+router = APIRouter(tags=["Restaurants"])
 
 
 @router.post("/", response_model=RestaurantResponse, status_code=status.HTTP_201_CREATED)

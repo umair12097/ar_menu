@@ -10,7 +10,7 @@ from ..models import MenuItem, Order, OrderItem, OrderStatus, Restaurant, User
 from ..schemas import OrderCreate, OrderResponse, OrderStatusUpdate
 from ..utils.auth import get_current_user
 
-router = APIRouter(prefix="/orders", tags=["Orders"])
+router = APIRouter(tags=["Orders"])
 
 
 def _generate_order_number(db: Session) -> str:

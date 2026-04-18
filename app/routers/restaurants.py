@@ -99,12 +99,12 @@
 #     return restaurant
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app.database import get_db
-from app.models.restaurant import Restaurant
-from app.schemas.restaurant import RestaurantCreate, RestaurantRead
+from ..database import get_db
+from app.models import Restaurant
+from app.schemas import RestaurantCreate, RestaurantRead
 from app.utils.qr_generator import generate_qr_code
-from app.dependencies import get_current_active_user
-from app.models.user import User
+from ..utils.auth import get_current_user
+from app.models import User
 
 router = APIRouter()
 

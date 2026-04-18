@@ -10,7 +10,7 @@ from ..database import get_db
 from ..models import MenuItem, Restaurant, User
 from ..utils.auth import get_current_user
 
-router = APIRouter(prefix="/upload", tags=["File Upload"])
+router = APIRouter(tags=["File Upload"])
 
 ALLOWED_IMAGE_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
 MAX_IMAGE_SIZE = 10 * 1024 * 1024   # 10 MB

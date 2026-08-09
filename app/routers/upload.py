@@ -179,7 +179,7 @@ async def _get_file_url(file: UploadFile, directory: str, url_path: str) -> str:
     """
     filename = await _save_file(file, directory)
     if filename:
-        return f"{url_path}/{filename}"
+        return f"{settings.BASE_URL}{url_path}/{filename}"
     # Last resort: base64
     print(f"[WARNING] Disk save failed, using base64 for {file.filename}")
     return await _to_base64(file)

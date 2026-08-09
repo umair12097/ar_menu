@@ -28,10 +28,13 @@ def create_restaurant(
     db.commit()
     db.refresh(restaurant)
 
-    qr_url = generate_qr_code(restaurant.id)
-    restaurant.qr_code_url = qr_url
-    db.commit()
-    db.refresh(restaurant)
+    try:
+        qr_url = generate_qr_code(restaurant.id)
+        restaurant.qr_code_url = qr_url
+        db.commit()
+        db.refresh(restaurant)
+    except Exception:
+        db.refresh(restaurant)
 
     return restaurant
 

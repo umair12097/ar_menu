@@ -1,0 +1,43 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "plugin": [
+        "superpowers@git+https://github.com/obra/superpowers.git",
+        "@tarquinen/opencode-dcp@latest"
+    ],
+    "provider": {
+        "dmr-p51": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "Qwen3.6",
+            "options": {
+                "baseURL": "https://litellm.researchq.net/v1",
+                "apiKey": "sk-8l6TiMdc1oWBXJY5T0oc-w"
+            },
+            "models": {
+                "Qwen3.6-27b-AWQ-256k": {
+                    "name": "Qwen3.6-27b-AWQ-256k",
+                    "modalities": {
+                        "input": [
+                            "text",
+                            "image"
+                        ],
+                        "output": [
+                            "text"
+                        ]
+                    }
+                },
+                "google/gemma-4-31B-it": {
+                    "name": "google/gemma-4-31B-it",
+                    "modalities": {
+                        "input": [
+                            "text",
+                            "image"
+                        ],
+                        "output": [
+                            "text"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

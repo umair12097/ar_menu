@@ -65,6 +65,7 @@ def create_order(data: OrderCreate, db: Session = Depends(get_db)):
         customer_name=data.customer_name,
         customer_phone=data.customer_phone,
         notes=data.notes,
+        status=OrderStatus.PENDING,
         total_price=total_price,
     )
     db.add(order)

@@ -9,7 +9,7 @@ def generate_qr_code(restaurant_id: int) -> str:
     On Vercel filesystem is ephemeral, so base64 is the reliable approach.
     """
 
-    qr_data = f"https://ar-menu-nextjs.vercel.app/restaurant/{restaurant_id}"
+    qr_data = f"https://ar-menu-nextjs.vercel.app/menu/{restaurant_id}"
 
     qr = qrcode.QRCode(
         version=1,

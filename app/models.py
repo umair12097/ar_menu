@@ -4,7 +4,6 @@ from sqlalchemy import (
     Boolean,
     Column,
     DateTime,
-    Enum,
     Float,
     ForeignKey,
     Integer,
@@ -38,7 +37,7 @@ class User(Base):
     email = Column(String(255), unique=True, index=True, nullable=False)
     hashed_password = Column(String(255), nullable=False)
     name = Column(String(255), nullable=False)
-    role = Column(Enum(UserRole), default=UserRole.OWNER)
+    role = Column(String(20), default=UserRole.OWNER.value, server_default=UserRole.OWNER.value, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
@@ -54,8 +53,8 @@ class Restaurant(Base):
     address = Column(String(500))
     phone = Column(String(50))
     email = Column(String(255))
-    logo_url = Column(String(500))
-    qr_code_url = Column(String(500))
+    logo_url = Column(Text)
+    qr_code_url = Column(Text)
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
@@ -87,8 +86,8 @@ class MenuItem(Base):
     name = Column(String(255), nullable=False)
     description = Column(Text)
     price = Column(Float, nullable=False)
-    image_url = Column(String(500))
-    model_3d_url = Column(String(500))
+    image_url = Column(Text)
+    model_3d_url = Column(Text)
     category_id = Column(Integer, ForeignKey("categories.id"), nullable=True)
     restaurant_id = Column(Integer, ForeignKey("restaurants.id"), nullable=False)
     rating = Column(Float, default=0.0)
@@ -114,7 +113,7 @@ class Order(Base):
     table_number = Column(String(50))
     customer_name = Column(String(255))
     customer_phone = Column(String(50))
-    status = Column(Enum(OrderStatus), default=OrderStatus.PENDING)
+    status = Column(String(20), default=OrderStatus.PENDING.value, server_default=OrderStatus.PENDING.value, nullable=False)
     total_price = Column(Float, nullable=False)
     notes = Column(Text)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
